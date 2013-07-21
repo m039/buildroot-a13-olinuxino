@@ -20,6 +20,10 @@ define TINYSCHEME_INSTALL_TARGET_CMDS
 # lib
     $(INSTALL) -m 0755 -D $(@D)/libtinyscheme.so $(TARGET_DIR)/usr/lib/libtinyscheme.so
     $(INSTALL) -m 0755 -D $(@D)/libtinyscheme.a $(TARGET_DIR)/usr/lib/libtinyscheme.a
+
+# init.scm
+    $(INSTALL) -m 0755 -d $(TARGET_DIR)/usr/lib/tinyscheme
+    $(INSTALL) -m 0755 -D $(@D)/init.scm $(TARGET_DIR)/usr/lib/tinyscheme/init.scm
 endef
 
 define TINYSCHEME_UNINSTALL_TARGET_CMDS
@@ -27,6 +31,8 @@ define TINYSCHEME_UNINSTALL_TARGET_CMDS
     rm -f $(TARGET_DIR)/usr/bin/tinyscheme
 # lib
     rm -rf $(TARGET_DIR)/usr/lib/libtinyscheme.{a, so}
+# init.scm
+    rm -rf $(TARGET_DIR)/usr/lib/tinyscheme
 endef
 
 $(eval $(generic-package))
